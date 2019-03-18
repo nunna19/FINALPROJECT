@@ -8,7 +8,7 @@ class Inbox extends Component {
 
   render(){
   return(
-    <div>
+    <div className="indexBox">
    <h1>inbox</h1>
   </div>
 

@@ -9,7 +9,7 @@ import Signup from './pages/Signup';
 import api from '../api';
 import NavBarProfile from './pages/NavBarProfile';
 import NewsFrom from './pages/NewsFrom';
-
+import WarnLogin from './pages/WarnLogin';
 
 
 export default class App extends Component {
@@ -41,7 +41,30 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-         {this.state.user.username}
+
+      <div className="headle">
+        <div>
+        <span>
+        {api.isLoggedIn() && <span>WELCOME :</span> } {this.state.user.username}
+         {!api.isLoggedIn() && <NavLink to="/signup">SIGN UP</NavLink>}
+         </span>
+         <span>
+         {!api.isLoggedIn() && <NavLink to="/login">LOG IN</NavLink>}
+         {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>   Logout</Link>}
+        </span>
+        </div>
+      </div>
+
+
+      <div className="mailNav">
+          <span><Link to="/Inbox">Inbox</Link></span>
+          <span><Link to="/Sent">Sent</Link></span> 
+          <span><Link to="/MailFrom">Write</Link></span> 
+          <span><Link to="/NewsFrom">News</Link></span> 
+        </div>
+
+
+
         <Switch>
 
 
@@ -59,11 +82,18 @@ export default class App extends Component {
             render={(props) => <Login {...props} setUser={this.setUser}/>}
           />
 
-          <Route
+        {api.isLoggedIn() && <Route
             path='/NavBarProfile'
             render={(props) => <NavBarProfile {...props} setUser={this.setUser}/>}
-          />
-                 
+
+          />}
+
+        {!api.isLoggedIn() && <Route
+            path='/NavBarProfile'
+            render={(props) => <WarnLogin {...props} setUser={this.setUser}/>}
+            
+          />}
+
           <Route
             path='/MailFrom'
             render={(props) => <MailFrom {...props} setUser={this.setUser}/>}
@@ -73,7 +103,7 @@ export default class App extends Component {
             path='/Sent'
             render={(props) => <Sent {...props} setUser={this.setUser}/>}
           />  
-
+       
           <Route 
             path='/Inbox'
             render={(props) => <Inbox {...props} setUser={this.setUser}/>}
@@ -81,25 +111,28 @@ export default class App extends Component {
 
           <Route
           path='/NewsFrom'
-          render={(props)=> <NewsFrom{...props} setUser={this.setUser}/>}
+          render={(props)=> <NewsFrom {...props} setUser={this.setUser}/>}
           />
 
+         
+         
           <Route render={() => <h2>404</h2>} />
 
 
         </Switch>
 
-          {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
-          {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
-          {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
+          
             
         <header className="menuBar">
+     
           <NavLink to="/" exact><img src="../news.png" style={{width:"100px"}}/></NavLink> 
           <NavLink to="/NavBarProfile" exact><img src="../upMail.png" style={{width:"60px"}}/></NavLink>
-          <NavLink to="/Profile" exact><img src="../upProflie.png" style={{width:"100px"}}/>
+          {/* <NavLink to="/Profile" exact><img src="../upProflie.png" style={{width:"100px"}}/>
           
-          </NavLink>  
+          </NavLink>   */}
         </header>
+
+
       </div>
     );
   }

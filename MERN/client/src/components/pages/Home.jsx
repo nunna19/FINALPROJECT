@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import CrossfadeImage from 'react-crossfade-image';
-
+import {NavLink} from 'react-router-dom';
+import api from '../../api';
+import moment from 'moment';
 
 
 const images = [
@@ -18,8 +20,8 @@ class Home extends Component {
   constructor() {
     super();
   this.state={
-    NewsMessage:[],
-    imageIndex: 0
+    NewsMessage:{messages:[]},
+    imageIndex: 0,
   }
   this.changeImage = this.changeImage.bind(this);
 }
@@ -46,38 +48,70 @@ componentDidMount=()=>{
     }
 
 
-    
     showAllNews=()=>{
-            const listNews = this.state.NewsMessage.map((eachMessage,i)=>{ 
-              console.log(eachMessage.Title)
+            const listNews = this.state.NewsMessage.messages.map((eachMessage,i)=>{ 
+             
               return (
-                  <div>
-                    <p>{eachMessage.Title} : {eachMessage.Description}</p>
+                  <div key={i} className="eachNewsBox">
+                    
+                    <i style={{color:"blue"}}>{ moment(eachMessage.created_at).format('L') }; : </i>
+                    Title : {eachMessage.Title} : {eachMessage.Description}
 
                   </div>
               )  
             })
             return listNews
           }
+      
+
+
+
+      showLogin=()=>{
+        if(api.isLoggedIn()){
+          return(
+            <div>
+            <NavLink to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</NavLink>
+           
+            </div>
+          )
+        }else {
+          return  (
+            <div>
+            <span><NavLink to="/signup">Signup</NavLink>  /  <NavLink to="login">Login</NavLink></span>
+            </div>
+          )
+        }
+      }
+
+
 
 
 render() {
+  // console.log(eachMessage.Title)
   return (
-    <div>
-    <div className="Homeimg">
+    <div className="Home">
+
       <button onClick={this.changeImage} >
+    
       <CrossfadeImage 
         src={images[this.state.imageIndex]}
         duration={1000}
         timingFunction={"ease-out"}
-        style={{ maxWidth:'100%', maxHeight: '100%' } }
+        style={{ maxWidth:'100%', maxHeight: '100%' }}
       />
-      </button>
-      </div>
-     
-      {this.showAllNews()}
 
-   </div>
+      </button>
+
+
+      <div className="NewsBox" >
+
+       <p> {this.showAllNews()} </p> 
+
+      </div>
+
+      
+
+    </div>
   );
 }
 }

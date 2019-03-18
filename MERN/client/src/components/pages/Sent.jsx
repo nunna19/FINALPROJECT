@@ -8,7 +8,7 @@ class Sent extends Component {
 
   render(){
   return(
-    <div>
+    <div className="sentBox">
    <h1>History Sent</h1>
   </div>
 

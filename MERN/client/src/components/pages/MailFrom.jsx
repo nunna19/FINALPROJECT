@@ -38,7 +38,7 @@ class Mail extends Component {
 
   render(){
   return(
-    <div>
+    <div className="mailBox">
     <h1>Report</h1>
           <form onSubmit={this.handleSubmit}>
               {/* <input type="text" name="Room" placeholder="Room Number"/> */}
