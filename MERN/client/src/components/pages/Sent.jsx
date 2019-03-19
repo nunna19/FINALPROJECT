@@ -16,22 +16,19 @@ class Sent extends Component {
   componentDidMount=()=>{
     
     let user = api.getLocalStorageUser(); 
-    let isOfficer = user.officer; 
+    
 
+    console.log('in sent')
 
     Axios.get('http://localhost:5000/api/getMessages')
     .then(res=>{
-
-      let messages = res.data.messages 
-      if(!isOfficer) {
-        var filteredMessages = messages.filter((message)=>{
-          return message.officer === true && message.userId === user._id //Only show messages that are from the officer and only to me 
-        })
-      } else {
-        var filteredMessages = messages.filter((message)=>{
-          return message.officer !== true //show all messages from people who are not the officer 
-        }) 
-      }
+      console.log('sdfgdsfgf',res)
+    let messages = res.data.messages 
+      var filteredMessages = messages.filter((message)=>{
+        console.log(message.writer, user._id)
+        return  message.writer === user._id //Only show messages that are from the officer and only to me 
+      })
+     
       console.log(res)
 
       this.setState({

@@ -10,6 +10,7 @@ const Users = require("../models/User")
 router.post("/sendMessage", isLoggedIn, (req, res, next) => {
   let message = new Message(req.body)
   message.officer = req.user.officer
+  message.writer = req.user._id 
 
 
   message.save((err, mes)=>{

@@ -5,14 +5,17 @@ const MessageSchema = new Schema({
 
   Title:String,
   Description:String,
-  Image:String,
-  userId: {
+  userId: { //person where are sending the message to
     type: Schema.Types.ObjectId,  
     ref: "User"
   },
   officer: {
     type:Boolean,
     default: false
+  },
+  writer: { //person where are writing the message from
+    type: Schema.Types.ObjectId,  
+    ref: "User"
   }
 },
  {
