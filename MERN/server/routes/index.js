@@ -4,10 +4,13 @@ const router = express.Router();
 const Message = require("../models/Message")
 const NewsMessage = require("../models/News")
 
+const Users = require("../models/User")
 
 
-router.post("/sendMessage", (req, res, next) => {
+router.post("/sendMessage", isLoggedIn, (req, res, next) => {
   let message = new Message(req.body)
+  message.officer = req.user.officer
+
 
   message.save((err, mes)=>{
     res.json({user:req.user, mes:mes})
@@ -22,15 +25,21 @@ router.get('/getMessages', (req,res,next) =>{
 
 
 
-
+router.get('/allUsers', (req, res, next) => {
+  Users.find().then(allTheUsers => {
+    res.json({allTheUsers})
+  })
+})
 
 
 
 router.post("/sendNews",(req, res, next)=>{
  let NewsMes = new NewsMessage(req.body)
-
+ const userId = req.user._id
  NewsMes.save((err,mes)=>{
-   res.json({user:req.user, mes:mes})
+   res.json({
+     user:req.user, mes:mes, userId:userId
+    })
  })
 })
 
@@ -39,6 +48,11 @@ router.get('/getNews', (req, res, next) =>{
       res.json({messages:messagesFromDatabase})
   })
 })
+
+
+
+
+
 
 
 module.exports = router;

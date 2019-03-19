@@ -5,9 +5,11 @@ export default class Signup extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: "",
-      name: "",
+      username: "",  // username = room number login
+      firstName: "",
+      lastName: "",
       password: "",
+      officer: false,
       message: null
     }
     this.handleInputChange = this.handleInputChange.bind(this)
@@ -23,14 +25,16 @@ export default class Signup extends Component {
     e.preventDefault()
     let data = {
       username: this.state.username,
-      name: this.state.name,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
       password: this.state.password,
+      officer:this.state.officer
     }
     api.signup(data)
       .then(result => {
         console.log('SUCCESS!')
         this.props.setUser()
-        this.props.history.push("/") // Redirect to the home page
+        this.props.history.push("/MailPage") // Redirect to the home page
       })
       .catch(err => this.setState({ message: err.toString() }))
   }
@@ -40,9 +44,11 @@ export default class Signup extends Component {
       <div className="Signup">
         <h2>Signup</h2>
         <form>
-          Username: <input type="text" value={this.state.username} name="username" onChange={this.handleInputChange} /> <br />
-          Name: <input type="text" value={this.state.name} name="name" onChange={this.handleInputChange} /> <br />
+          Room number: <input type="number" value={this.state.username} name="username" onChange={this.handleInputChange} placeholder="Room Numder" /> <br />
+          FirstName: <input type="text" value={this.state.firstName} name="firstName" onChange={this.handleInputChange} />  
+          <span>  LastName: <input type="text" value={this.state.lastName} name="lastName" onChange={this.handleInputChange} /> </span> <br />
           Password: <input type="password" value={this.state.password} name="password" onChange={this.handleInputChange} /> <br />
+          Officer: <input type="checkbox" value={this.state.officer} name="officer" onChange={this.handleInputChange} /> <br/>
           <button onClick={(e) => this.handleClick(e)}>Signup</button>
         </form>
         {this.state.message && <div className="info info-danger">

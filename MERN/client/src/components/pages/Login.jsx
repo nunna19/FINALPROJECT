@@ -5,7 +5,7 @@ export default class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: "",
+      username: "", //username = room number login
       password: "",
       message: null
     }
@@ -25,7 +25,7 @@ export default class Login extends Component {
         // console.log(api.getLocalStorageUser())
         // this.setState({user:api.getLocalStorageUser()})
         this.props.setUser()
-        this.props.history.push("/") // Redirect to the home page
+        this.props.history.push("/MailPage") // Redirect to the home page
       })
       .catch(err => this.setState({ message: err.toString() }))
   }
@@ -36,7 +36,7 @@ export default class Login extends Component {
       <div className="Login">
         <h2>Login</h2>
         <form>
-          Username: <input type="text" value={this.state.username} name="username" onChange={this.handleInputChange} /> <br />
+          Room number: <input type="number" value={this.state.username} name="username" onChange={this.handleInputChange} placeholder="Room Numder" /> <br />
           Password: <input type="password" value={this.state.password} name="password" onChange={this.handleInputChange} /> <br />
           <button onClick={(e) => this.handleClick(e)}>Login</button>
         </form>

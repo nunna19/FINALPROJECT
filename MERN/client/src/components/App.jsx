@@ -7,7 +7,7 @@ import Inbox from './pages/Inbox';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import api from '../api';
-import NavBarProfile from './pages/NavBarProfile';
+import MailPage from './pages/MailPage';
 import NewsFrom from './pages/NewsFrom';
 import WarnLogin from './pages/WarnLogin';
 
@@ -39,13 +39,14 @@ export default class App extends Component {
   }
 
   render() {
+    console.log(this)
     return (
       <div className="App">
 
       <div className="headle">
         <div>
         <span>
-        {api.isLoggedIn() && <span>WELCOME :</span> } {this.state.user.username}
+        {api.isLoggedIn() && <span>WELCOME :</span> } {this.state.user.firstName}
          {!api.isLoggedIn() && <NavLink to="/signup">SIGN UP</NavLink>}
          </span>
          <span>
@@ -53,17 +54,9 @@ export default class App extends Component {
          {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>   Logout</Link>}
         </span>
         </div>
-      </div>
+      </div>  
 
-
-      <div className="mailNav">
-          <span><Link to="/Inbox">Inbox</Link></span>
-          <span><Link to="/Sent">Sent</Link></span> 
-          <span><Link to="/MailFrom">Write</Link></span> 
-          <span><Link to="/NewsFrom">News</Link></span> 
-        </div>
-
-
+  
 
         <Switch>
 
@@ -83,13 +76,13 @@ export default class App extends Component {
           />
 
         {api.isLoggedIn() && <Route
-            path='/NavBarProfile'
-            render={(props) => <NavBarProfile {...props} setUser={this.setUser}/>}
+            path='/MailPage'
+            render={(props) => <MailPage {...props} setUser={this.setUser}/>}
 
           />}
 
         {!api.isLoggedIn() && <Route
-            path='/NavBarProfile'
+            path='/MailPage'
             render={(props) => <WarnLogin {...props} setUser={this.setUser}/>}
             
           />}
@@ -126,7 +119,7 @@ export default class App extends Component {
         <header className="menuBar">
      
           <NavLink to="/" exact><img src="../news.png" style={{width:"100px"}}/></NavLink> 
-          <NavLink to="/NavBarProfile" exact><img src="../upMail.png" style={{width:"60px"}}/></NavLink>
+          <NavLink to="/MailPage" exact><img src="../upMail.png" style={{width:"60px"}}/></NavLink>
           {/* <NavLink to="/Profile" exact><img src="../upProflie.png" style={{width:"100px"}}/>
           
           </NavLink>   */}

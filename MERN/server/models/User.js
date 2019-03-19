@@ -2,11 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  username: String,
+  username: String, /// going to be a room number
   password: String,
   firstName: String, 
-  LastName: String,
-  room: String,
+  lastName: String,
   officer:{
     default: false,
     type: Boolean
