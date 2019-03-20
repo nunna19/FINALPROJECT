@@ -5,6 +5,7 @@ const MessageSchema = new Schema({
 
   Title:String,
   Description:String,
+  Image:String,
   userId: { //person where are sending the message to
     type: Schema.Types.ObjectId,  
     ref: "User"
