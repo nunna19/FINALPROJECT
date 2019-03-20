@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import CrossfadeImage from 'react-crossfade-image';
+// import CrossfadeImage from 'react-crossfade-image';
 import {NavLink} from 'react-router-dom';
 import api from '../../api';
 import moment from 'moment';
