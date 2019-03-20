@@ -32,7 +32,7 @@ class Mail extends Component {
     };
     console.log(postObj);
 
-    axios.post(`${SERVER_URL}api/sendMessage`, postObj).then(res => {
+    axios.post(`${SERVER_URL}/sendMessage`, postObj).then(res => {
       console.log(res);
     });
   };
