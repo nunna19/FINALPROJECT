@@ -46,7 +46,7 @@ class Mail extends Component {
       return <option value={user._id}>{user.username}</option>;
     });
   }else{
-    return <option>To Officer</option>;
+    return <option value={user._id}>To Officer</option>;
   }
   };
 
