@@ -6,34 +6,34 @@ import api from '../../api';
 import moment from 'moment';
 
 
-const images = [
-  "../kitchens.jpg",
-  "../condo.jpeg",
-  "../living.jpg",
-  "/bathroom.jpg",
-  "/fit.jpg",
-  "/pool.jpg",
-  "/nice living.jpg",
-  "/viewcondo.jpg"
-];
+// const images = [
+//   "../kitchens.jpg",
+//   "../condo.jpeg",
+//   "../living.jpg",
+//   "/bathroom.jpg",
+//   "/fit.jpg",
+//   "/pool.jpg",
+//   "/nice living.jpg",
+//   "/viewcondo.jpg"
+// ];
 class Home extends Component {
   constructor() {
     super();
   this.state={
     NewsMessage:{messages:[]},
-    imageIndex: 0,
+    // imageIndex: 0,
   }
-  this.changeImage = this.changeImage.bind(this);
+  // this.changeImage = this.changeImage.bind(this);
 }
 
-changeImage() {
-  if (this.state.imageIndex === images.length - 1) {
-    this.setState({ imageIndex: 0 });
-  } else {
-    this.setState({ imageIndex: this.state.imageIndex + 1 });
-  }
+// changeImage() {
+//   if (this.state.imageIndex === images.length - 1) {
+//     this.setState({ imageIndex: 0 });
+//   } else {
+//     this.setState({ imageIndex: this.state.imageIndex + 1 });
+//   }
  
-}
+// }
 
 
 componentDidMount=()=>{
@@ -90,7 +90,7 @@ render() {
   // console.log(eachMessage.Title)
   return (
     <div className="Home">
-
+{/* 
       <button onClick={this.changeImage} >
     
       <CrossfadeImage 
@@ -100,7 +100,7 @@ render() {
         style={{ maxWidth:'100%', maxHeight: '100%' }}
       />
 
-      </button>
+      </button> */}
 
 
       <div className="NewsBox" >
