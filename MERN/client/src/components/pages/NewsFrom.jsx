@@ -1,13 +1,13 @@
 import React, {Component}  from 'react';
 import axios from 'axios';
 import NavBar from './NavBar';
-
+import {SERVER_URL} from '../../config'
 
 
 class News extends Component {
 
     componentDidMount() {
-        axios.get('http://localhost:5000/api/getNews').then(res=>{
+        axios.get(`${SERVER_URL}/getNews`).then(res=>{
             console.log(res)
         })   
     }
@@ -31,7 +31,7 @@ class News extends Component {
       console.log(postObj)
   
     
-      axios.post('http://localhost:5000/api/sendNews', postObj).then(res=>{
+      axios.post(`${SERVER_URL}/sendNews`, postObj).then(res=>{
         console.log(res)
       })
   

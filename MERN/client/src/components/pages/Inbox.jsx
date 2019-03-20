@@ -3,7 +3,7 @@ import Axios from 'axios';
 import NavBar from './NavBar';
 import moment from 'moment';
 import api from '../../api';
-
+import {SERVER_URL} from '../../config'
 
 
 class Inbox extends Component {
@@ -20,7 +20,7 @@ class Inbox extends Component {
     let isOfficer = user.officer; 
 
 
-    Axios.get('http://localhost:5000/api/getMessages')
+    Axios.get(`${SERVER_URL}/getMessages`)
     .then(res=>{
 
       let messages = res.data.messages 

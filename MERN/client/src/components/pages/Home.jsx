@@ -1,45 +1,45 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-// import CrossfadeImage from 'react-crossfade-image';
+import CrossfadeImage from 'react-crossfade-image';
 import {NavLink} from 'react-router-dom';
 import api from '../../api';
 import moment from 'moment';
+import {SERVER_URL} from '../../config'
 
-
-// const images = [
-//   "../kitchens.jpg",
-//   "../condo.jpeg",
-//   "../living.jpg",
-//   "/bathroom.jpg",
-//   "/fit.jpg",
-//   "/pool.jpg",
-//   "/nice living.jpg",
-//   "/viewcondo.jpg"
-// ];
+const images = [
+  "../kitchens.jpg",
+  "../condo.jpeg",
+  "../living.jpg",
+  "/bathroom.jpg",
+  "/fit.jpg",
+  "/pool.jpg",
+  "/nice living.jpg",
+  "/viewcondo.jpg"
+];
 class Home extends Component {
   constructor() {
     super();
   this.state={
     NewsMessage:{messages:[]},
-    // imageIndex: 0,
+    imageIndex: 0,
   }
-  // this.changeImage = this.changeImage.bind(this);
+  this.changeImage = this.changeImage.bind(this);
 }
 
-// changeImage() {
-//   if (this.state.imageIndex === images.length - 1) {
-//     this.setState({ imageIndex: 0 });
-//   } else {
-//     this.setState({ imageIndex: this.state.imageIndex + 1 });
-//   }
+changeImage() {
+  if (this.state.imageIndex === images.length - 1) {
+    this.setState({ imageIndex: 0 });
+  } else {
+    this.setState({ imageIndex: this.state.imageIndex + 1 });
+  }
  
-// }
+}
 
 
 componentDidMount=()=>{
 
 
-      Axios.get('http://localhost:5000/api/getNews')
+      Axios.get(`${SERVER_URL}/getNews`)
       .then(res=>{
         this.setState({
           NewsMessage:res.data
@@ -89,21 +89,18 @@ componentDidMount=()=>{
 render() {
   // console.log(eachMessage.Title)
   return (
-    <div className="Home">
-{/* 
-      <button onClick={this.changeImage} >
-    
-      <CrossfadeImage 
-        src={images[this.state.imageIndex]}
-        duration={1000}
-        timingFunction={"ease-out"}
-        style={{ maxWidth:'100%', maxHeight: '100%' }}
-      />
+      <div className="Home">
 
+       <button onClick={this.changeImage} >
 
+    <CrossfadeImage 
+      src={images[this.state.imageIndex]}
+      duration={1000}
+      timingFunction={"ease-out"}
+      style={{ maxWidth:'100%', maxHeight: '100%' }}
+    />
 
-      
-      </button> */}
+      </button>
 
 
       <div className="NewsBox" >

@@ -3,7 +3,7 @@ import axios from "axios";
 import NavBar from "./NavBar";
 import api from '../../api';
 import {CloudinaryContext, Transformation} from 'cloudinary-react';
-
+import {SERVER_URL} from '../../config'
 
 class Mail extends Component {
   state = {
@@ -11,7 +11,7 @@ class Mail extends Component {
   };
 
   componentDidMount() {
-    axios.get("http://localhost:5000/api/allUsers").then(res => {
+    axios.get(`${SERVER_URL}/allUsers`).then(res => {
       console.log(res);
       this.setState({ users: res.data.allTheUsers });
     });
@@ -32,7 +32,7 @@ class Mail extends Component {
     };
     console.log(postObj);
 
-    axios.post("http://localhost:5000/api/sendMessage", postObj).then(res => {
+    axios.post(`${SERVER_URL}api/sendMessage`, postObj).then(res => {
       console.log(res);
     });
   };
