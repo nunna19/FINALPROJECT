@@ -161,3 +161,17 @@ font-size: 4vw;
   margin: 1vh 5vh 5vh 5vw;
   border-top: 1vw solid #9b9999;
 }
+
+.inputMailBox{
+  margin: 5vh;
+}
+.inputMailBox input{
+  margin: 2vw;
+}
+
+.inputMailBox input input{
+  width: 100px;
+}
+input, textarea, .inputMailBox button{
+  border: 1px solid gray;
+}

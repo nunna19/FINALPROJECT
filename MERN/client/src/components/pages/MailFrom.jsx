@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import NavBar from "./NavBar";
 import api from '../../api';
-
+import {CloudinaryContext, Transformation} from 'cloudinary-react';
 
 
 class Mail extends Component {
@@ -19,15 +19,15 @@ class Mail extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    let { Title, Description, itemType } = event.target;
+    let { Title, Description, itemType, Image} = event.target;
 
-    //let offier = api.getLocalStorageUser().officer
 
     let postObj = {
       //We are sending this to our api -- this will be req.body on the server side
       Title: Title.value,
       Description: Description.value,
       userId: itemType.value,
+      Image: Image.value
 
     };
     console.log(postObj);
@@ -38,9 +38,16 @@ class Mail extends Component {
   };
 
   showAllTheUsers = () => {
+    let user = api.getLocalStorageUser(); 
+    let isOfficer = user.officer; 
+    if(isOfficer){
     return this.state.users.map(user => {
+
       return <option value={user._id}>{user.username}</option>;
     });
+  }else{
+    return <option>To Officer</option>;
+  }
   };
 
   render() {
@@ -50,20 +57,23 @@ class Mail extends Component {
 
         <div className="mailBox">
 
+        <div className="inputMailBox">
+
           <form onSubmit={this.handleSubmit}>
 
             <select name="itemType">
+            
               {this.showAllTheUsers()}
             </select>
 
             <input type="text" name="Title" placeholder="Title" />
-            <input type="text" name="Description" placeholder="Description" />
-            {/* <input type="file" name="Photo" placeholder=""/> */}
-
+            <textarea type="text" name="Description" placeholder="Description" cols="30" rows="7"/>
+            <input type="file"  name="Photo" placeholder=""/> <br/>
             <button type="submit">Sent</button>
 
           </form>
 
+          </div>
         </div>
       </div>
     );

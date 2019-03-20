@@ -47,7 +47,7 @@ class News extends Component {
               {/* <input type="text" name="Room" placeholder="Room Number"/> */}
               <input type="text" name="Title" placeholder="Title"/>
               <input type="text" name="Description" placeholder="Description"/>
-              {/* <input type="file" name="Photo" placeholder=""/> */}
+              <input type="file" name="Photo" placeholder=""/>
               <button type='submit'>
                   Sent
               </button>
