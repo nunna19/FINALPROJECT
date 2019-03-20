@@ -19,7 +19,7 @@ class Mail extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    let { Title, Description, itemType, Image} = event.target;
+    let { Title, Description, itemType} = event.target;
 
 
     let postObj = {
@@ -27,7 +27,7 @@ class Mail extends Component {
       Title: Title.value,
       Description: Description.value,
       userId: itemType.value,
-      Image: Image.value
+      // Image: Image.value
 
     };
     console.log(postObj);
