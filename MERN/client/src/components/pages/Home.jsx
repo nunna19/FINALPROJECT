@@ -87,7 +87,7 @@ componentDidMount=()=>{
 
 
 render() {
-  // console.log(eachMessage.Title)
+ 
   return (
       <div className="Home">
 
