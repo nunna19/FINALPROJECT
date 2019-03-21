@@ -44,9 +44,14 @@ export default class App extends Component {
       <div className="App">
 
       <div className="headle">
-        <div>
+        
+          <div className="picNavBar">
+            <span><NavLink to="/" exact><img src="../news.png" style={{width:"85px"}}/></NavLink> </span>
+            <span> <NavLink to="/MailPage" exact><img src="../upMail.png" style={{width:"50px"}}/></NavLink></span>
+          </div>
+          <div className="welcome">
         <span>
-        {api.isLoggedIn() && <span>WELCOME :</span> } {this.state.user.firstName}
+        {api.isLoggedIn() && <span >Hello :</span> } {this.state.user.firstName}
          {!api.isLoggedIn() && <NavLink to="/signup">SIGN UP</NavLink>}
          </span>
          <span>
@@ -118,11 +123,8 @@ export default class App extends Component {
             
         <header className="menuBar">
      
-          <NavLink to="/" exact><img src="../news.png" style={{width:"100px"}}/></NavLink> 
-          <NavLink to="/MailPage" exact><img src="../upMail.png" style={{width:"60px"}}/></NavLink>
-          {/* <NavLink to="/Profile" exact><img src="../upProflie.png" style={{width:"100px"}}/>
-          
-          </NavLink>   */}
+        
+    
         </header>
 
 

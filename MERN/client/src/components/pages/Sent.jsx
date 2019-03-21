@@ -7,9 +7,10 @@ import {SERVER_URL} from '../../config'
 
 class Sent extends Component {
 
-
+  
   state={
     messages:[]
+    
   }
 
 
@@ -17,15 +18,14 @@ class Sent extends Component {
     
     let user = api.getLocalStorageUser(); 
     
-
     console.log('in sent')
 
     Axios.get(`${SERVER_URL}/getMessages`)
     .then(res=>{
-      console.log('sdfgdsfgf',res)
+      console.log('in sent axios',res)
     let messages = res.data.messages 
       var filteredMessages = messages.filter((message)=>{
-        console.log(message.writer, user._id)
+        console.log('write',message.writer, 'this maybe',user._id)
         return  message.writer === user._id //Only show messages that are from the officer and only to me 
       })
      
@@ -57,7 +57,7 @@ class Sent extends Component {
 
 
   render(){
- 
+    console.log(this.state.messages)
   return(
     <div> 
       <NavBar/>

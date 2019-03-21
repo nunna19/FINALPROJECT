@@ -3,7 +3,7 @@ const { isLoggedIn } = require('../middlewares')
 const router = express.Router();
 const Message = require("../models/Message")
 const NewsMessage = require("../models/News")
-
+const uploadCloud = require('../configs/cloudinary')
 const Users = require("../models/User")
 
 
@@ -19,11 +19,11 @@ router.post("/sendMessage", isLoggedIn, (req, res, next) => {
 })
 
 router.get('/getMessages', (req,res,next) =>{
-  Message.find().then(messagesFromDatabase=>{
+  Message.find().populate('writer').then(messagesFromDatabase=>{
     res.json({messages:messagesFromDatabase})
   })
 })
-
+// .populate('writer').populate('userId')
 
 
 router.get('/allUsers', (req, res, next) => {
@@ -53,6 +53,23 @@ router.get('/getNews', (req, res, next) =>{
 
 
 
+router.post('/savePhoto', uploadCloud.single('photo'), (req, res, next) => {
+  // const { title, description } = req.body;
+  // const imgPath = req.file.url;
+  // const imgName = req.file.originalname;
+  console.log("UPLOAD PHOTO", req.file)
+  res.json({
+    imgPath:req.file
+  })
+  // const newMovie = new Movie({title, description, imgPath, imgName})
+  // newMovie.save()
+  // .then(movie => {
+  //   res.redirect('/');
+  // })
+  // .catch(error => {
+  //   console.log(error);
+  // })
+});
 
 
 

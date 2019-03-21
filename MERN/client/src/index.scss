@@ -1,6 +1,6 @@
 // --------------------
 // Definition of variables
-$primary: #9b9999;
+$primary: #ffffff;
 
 
 // ----------------------------------------
@@ -22,7 +22,7 @@ $primary: #9b9999;
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: monospace;
 }
 
 .menuBar {
@@ -53,11 +53,20 @@ body {
 }
 
 .headle{
-  background-color: $primary;
-  height: 3vw;
+  background-color: #9b9999;
     padding: 1vw;
     box-shadow: 0 0 15px;
     margin-top:0.2vh;
+}
+.headle:hover{
+  background-color: $primary;
+}
+.headle .picNavBar{
+  margin-left:40px; 
+}
+.headle .picNavBar a:hover{
+ 
+background-color: red;
 }
 
 .headle span{
@@ -65,10 +74,10 @@ body {
   padding-right: 5px;
 }
 
-.headle div{
+.headle {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content:space-between;
 }
 .wornBackground{
  
@@ -119,6 +128,9 @@ border-bottom: 1px solid rgb(0, 128, 255);
   overflow: scroll;
   box-shadow: 0 0 200px rgb(255, 255, 255);
 }
+.eachInbox .title{
+font-weight: bold;
+}
 .eachNewsBox , .eachInbox,{
   border: 1px solid rgb(255, 255, 255);
   box-shadow: 0 0 10px rgb(136, 135, 135);
@@ -160,6 +172,10 @@ font-size: 4vw;
   border:1px solid none;
   margin: 1vh 5vh 5vh 5vw;
   border-top: 1vw solid #9b9999;
+}
+
+.indexMesBox form input{
+  margin: 3vh 0 0 3vh;
 }
 
 .inputMailBox{

@@ -10,6 +10,8 @@ class Inbox extends Component {
 
   state={
     messages:[],
+    filteredRoom:[],
+    sortMes:[]
   }
 
 
@@ -36,22 +38,53 @@ class Inbox extends Component {
       console.log(res)
 
       this.setState({
-        messages:filteredMessages
+        messages:filteredMessages,
+        filteredRoom:filteredMessages  /// search need because fillter up here too.
     })
     })
   }
 
 
 
-  showAllNews=()=>{
-    const listNews = this.state.messages.map((eachInbox,i)=>{ 
-     
-      return (
-          <div key={i} className="eachInbox">
-            
-            <i style={{color:"blue"}}>{ moment(eachInbox.created_at).format('L') }; : </i>
-            Title : {eachInbox.Title} : {eachInbox.Description}
+  sortMessages =(something)=>{
+    const messageCopy = [...this.state.messages]
 
+    messageCopy.sort(function(a,b){
+
+      if (a[something] < b[something])
+      {return -1}
+      if (a[something] > b[something])
+      {return 1}
+    return 0
+    })
+    this.setState({
+      sortMes:messageCopy
+    })
+  }
+
+
+
+
+
+  showAllNews=()=>{
+    const listNews = this.state.filteredRoom.map((eachInbox,i)=>{ 
+
+      if (eachInbox.writer.officer === false){
+        return(
+        <div key={i} className="eachInbox" >
+            <span>FROM : {eachInbox.writer.username} </span>
+                <i style={{color:"blue"}}> { moment(eachInbox.created_at).format('L') }; : </i>
+                <span className="title">{eachInbox.Title.toUpperCase()}</span>: {eachInbox.Description}
+       </div>
+        )
+      }
+      return (
+      
+
+          <div key={i} className="eachInbox">
+
+           <i style={{color:"blue"}}> { moment(eachInbox.created_at).format('L') }; : </i>
+              <span className="title">{eachInbox.Title.toUpperCase()}</span> : {eachInbox.Description}
           </div>
       )  
     })
@@ -60,19 +93,47 @@ class Inbox extends Component {
 
 
 
+  updateSearch = (event) => {
+    console.log(event.target.value, this.state.messages)
+    let messages = [...this.state.messages]
+    let filterList = messages.filter((data)=>{
+      console.log(data.writer.username, event.target.value)
+      return data.writer.username.includes(event.target.value)
+
+    })
+    this.setState({
+      filteredRoom:filterList, 
+      search:event.target.value 
+    })
+  }
+
+
+
+
+
+  
   render(){
+   console.log()
   return(
     <div> 
       <NavBar/>
-    <div className="indexBox">
+          <div className="indexBox">
 
-  </div>
+    </div>
 
-  <div className="indexMesBox" >
+    <div className="indexMesBox" >
+        <form>
 
-<p> {this.showAllNews()} </p> 
+             <input type="text" value={this.state.search} placeholder="Room Search..." 
+             onChange={this.updateSearch}
+             />
 
-</div>
+        </form>
+    <p> {this.showAllNews()} </p> 
+
+
+
+    </div>
   </div>
   )
 }
