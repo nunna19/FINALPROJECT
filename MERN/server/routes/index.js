@@ -54,21 +54,12 @@ router.get('/getNews', (req, res, next) =>{
 
 
 router.post('/savePhoto', uploadCloud.single('photo'), (req, res, next) => {
-  // const { title, description } = req.body;
-  // const imgPath = req.file.url;
-  // const imgName = req.file.originalname;
+
   console.log("UPLOAD PHOTO", req.file)
   res.json({
     imgPath:req.file
   })
-  // const newMovie = new Movie({title, description, imgPath, imgName})
-  // newMovie.save()
-  // .then(movie => {
-  //   res.redirect('/');
-  // })
-  // .catch(error => {
-  //   console.log(error);
-  // })
+
 });
 
 

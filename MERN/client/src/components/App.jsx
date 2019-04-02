@@ -46,16 +46,16 @@ export default class App extends Component {
       <div className="headle">
         
           <div className="picNavBar">
-            <span><NavLink to="/" exact><img src="../news.png" style={{width:"85px"}}/></NavLink> </span>
-            <span> <NavLink to="/MailPage" exact><img src="../upMail.png" style={{width:"50px"}}/></NavLink></span>
+          <NavLink to="/" exact><img src="../news.png" style={{width:"65px"}}/></NavLink> 
+           <NavLink to="/MailPage" exact><img src="../upMail.png" style={{width:"40px"}}/></NavLink>
           </div>
           <div className="welcome">
         <span>
         {api.isLoggedIn() && <span >Hello :</span> } {this.state.user.firstName}
          {!api.isLoggedIn() && <NavLink to="/signup">SIGN UP</NavLink>}
          </span>
-         <span>
-         {!api.isLoggedIn() && <NavLink to="/login">LOG IN</NavLink>}
+         <span> |
+        {!api.isLoggedIn() && <NavLink to="/login"> LOG IN</NavLink>}
          {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>   Logout</Link>}
         </span>
         </div>

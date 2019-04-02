@@ -26,7 +26,7 @@ class Sent extends Component {
     let messages = res.data.messages 
       var filteredMessages = messages.filter((message)=>{
         console.log('write',message.writer, 'this maybe',user._id)
-        return  message.writer === user._id //Only show messages that are from the officer and only to me 
+        return  message.writer._id === user._id //Only show messages that are from the officer and only to me 
       })
      
       console.log(res)
@@ -46,7 +46,7 @@ class Sent extends Component {
           <div key={i} className="eachInbox">
             
             <i style={{color:"blue"}}>{ moment(eachInbox.created_at).format('L') }; : </i>
-            Title : {eachInbox.Title} : {eachInbox.Description}
+            Title : {eachInbox.Title} : {eachInbox.Description} <img sce={eachInbox.Image}/>
 
           </div>
       )  

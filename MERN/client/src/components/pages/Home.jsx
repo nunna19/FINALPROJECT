@@ -16,7 +16,6 @@ class Home extends Component {
     imageIndex: 0,
     images:  [
       "../condo.jpeg",
-      "../living.jpg"
     ]
   }
   this.changeImage = this.changeImage.bind(this);
@@ -99,14 +98,14 @@ render() {
       <div className="Home">
 
        <button onClick={this.changeImage} >
-
+    <div className="home-image">
     <CrossfadeImage 
       src={this.state.images[this.state.imageIndex]}
       duration={1000}
       timingFunction={"ease-out"}
-      style={{ maxWidth:'100%', maxHeight: '100%' }}
+      style={{ maxWidth:'100%', maxHeight: '100%', display:"flex" }}
     />
-
+    </div>
       </button>
 
       

@@ -46,7 +46,7 @@ export default class Signup extends Component {
         <form>
 
           Room number: <input type="number" value={this.state.username} name="username" onChange={this.handleInputChange} placeholder="Room Numder" /> <br />
-          FirstName: <input type="text" value={this.state.firstName} name="firstName" onChange={this.handleInputChange} placeholder="first name..." />  
+          FirstName: <input type="text" value={this.state.firstName} name="firstName" onChange={this.handleInputChange} placeholder="first name..." />  <br/>
           LastName: <input type="text" value={this.state.lastName} name="lastName" onChange={this.handleInputChange} placeholder="last name..." /> <br />
           Password: <input type="password" value={this.state.password} name="password" onChange={this.handleInputChange} placeholder="password..." /> <br />
           <button onClick={(e) => this.handleClick(e)}>Signup</button>

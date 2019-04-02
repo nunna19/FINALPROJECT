@@ -1,5 +1,4 @@
 import React, {Component}  from 'react';
-import Axios from 'axios';
 import {Link} from 'react-router-dom';
 import api from '../../api';
 
@@ -13,7 +12,7 @@ class NavBar extends Component {
     let isOfficer = user.officer; 
 
     if (isOfficer){
-      return(<span><Link to="/NewsFrom">News</Link></span> )
+      return(<span><Link to="/NewsFrom">Update News</Link></span> )
     }
 
   }

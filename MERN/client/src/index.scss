@@ -1,6 +1,6 @@
 // --------------------
 // Definition of variables
-$primary: #ffffff;
+$primary: #8d8e99;
 
 
 // ----------------------------------------
@@ -19,59 +19,66 @@ $primary: #ffffff;
 
 // --------------------
 // Style reusable for all components
+
 body {
   margin: 0;
   padding: 0;
-  font-family: monospace;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 .menuBar {
-  background-color: $primary;
+  background-color: #6a6a72;
   padding: 10px 10px 5px 10px;
   color: rgb(255, 255, 255);
   position: fixed;
   bottom: 0;
   width: 100%;
-  border-top: 2px solid gray;
+  border: 2px solid gray;
 
 }
 .Home
   {
-    background: url("/home.jpg")no-repeat center center fixed;
+    background: url("/newsbackg.jpg")no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 650px;
+    height: 800px;
+    background-repeat: no-repeat
 
   }
 
 .Home img{
-  width: 500px;
-  height: 200px;
-  padding-top: 20px;
+  width: 700px;
+  height: 300px;
+  border-radius: 20px;
+  padding: 2px 0 2px 0;
 }
-
+.Home button{
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 20px;
+  border-radius: 20px;
+  
+}
 .headle{
-  background-color: #9b9999;
-    padding: 1vw;
+  background-color: $primary;
     box-shadow: 0 0 15px;
-    margin-top:0.2vh;
 }
 .headle:hover{
-  background-color: $primary;
+  background-color: #9b9999;
 }
 .headle .picNavBar{
   margin-left:40px; 
 }
-.headle .picNavBar a:hover{
- 
-background-color: red;
-}
+
 
 .headle span{
-  font-size: 3vw;
+  font-size: 2vw;
   padding-right: 5px;
+ 
 }
 
 .headle {
@@ -86,7 +93,7 @@ background-color: red;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 650px;;
+  height: 800px;
  
 }
 .warnFirstBox{
@@ -101,7 +108,7 @@ background-color: red;
   box-shadow: 0 0 20px rgb(136, 135, 135);
   border-radius: 10px;
   text-align: center;
-  margin-top: 20%;
+  margin-top: 10%;
   font-size: 4vw;
   color: white
 }
@@ -116,17 +123,17 @@ a{
 }
 a:hover {
 color: rgb(0, 128, 255);
-border-bottom: 1px solid rgb(0, 128, 255);
+border-bottom: 3px solid rgb(0, 128, 255);
 }
 .NewsBox, .indexMesBox, .sentBox{
-  margin:0 5vw 0 5vw;
+  margin:0 15vw 0 15vw;
 }
 .NewsBox p , .indexMesBox p, .sentBox p{
   border: 1px solid rgb(255, 255, 255);
   border-radius: 5px;
-  font: 10px sans-serif;
+  font: 15px sans-serif;
   overflow: scroll;
-  box-shadow: 0 0 200px rgb(255, 255, 255);
+  // box-shadow: 0 0 200px rgb(255, 255, 255);
 }
 .eachInbox .title{
 font-weight: bold;
@@ -141,19 +148,19 @@ font-weight: bold;
   background-color: white;
 }
 .eachNewsBox, .eachInbox, {
-  height: 2vh;
+  height: 3vh;
 }
-.eachNewsBox:hover,{
-  height:10vh;
+.eachNewsBox:hover,.eachInbox:hover{
+  height:20vh;
   overflow:scroll;
   color: black;
   background-color: rgb(233, 233, 235);
 }
 .indexMesBox p{
-  height: 20vh;
+  height: 60vh;
 }
 .NewsBox p{
-  height: 30vh;
+  height: 50vh;
 }
 .sentBox p{
   height: 60vh;
@@ -168,16 +175,19 @@ border-top:1vw solid #9b9999;
 font-size: 4vw;
 
 }
-.indexMesBox, .sentBox, .mailBox, .newsBox{
+.indexMesBox, .sentBox, .mailBox, .newsBox,.newsFrom{
   border:1px solid none;
-  margin: 1vh 5vh 5vh 5vw;
+  margin: 2vh 10vh 0 10vh;
   border-top: 1vw solid #9b9999;
 }
 
 .indexMesBox form input{
-  margin: 3vh 0 0 3vh;
+  border-radius: 2px;
+  
 }
-
+.indexMesBox form img{
+  padding-top: 15px;
+}
 .inputMailBox{
   margin: 5vh;
 }
@@ -190,4 +200,130 @@ font-size: 4vw;
 }
 input, textarea, .inputMailBox button{
   border: 1px solid gray;
+}
+.newsFrom textarea{
+  width: 60vw;
+  height: 20vh;
+
+}
+.inputMailBox form{
+  border: 1px solid none;
+  padding: 6vw;
+  margin: 0 10vw;
+  background:url(/notebook.jpg) ;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgb(153, 153, 221);
+}
+.inputMailBox form .title,.newsFrom form .title{
+  width: 30vw;
+  height: 5vh;
+  border: none;
+}
+.inputMailBox form .textarea{
+  margin-left:20px;
+  border: none;
+}
+.inputMailBox form .photo{
+  border: none;
+}
+.inputMailBox button{
+  margin-left:25px;
+  background-color: rgba(55, 55, 207, 0.74);
+  color: white;
+  border-radius: 5px;
+}
+
+.newsFrom form{
+  border: 1px solid none;
+  padding: 6vw;
+  margin:  5vw 10vw;
+  background: url("/newsbackg.jpg");
+  background-repeat: no-repeat;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgb(136, 135, 135);
+}
+.newsFrom form .title, .textarea, button {
+border: none;
+margin-bottom: 10px;
+border-radius: 5px;
+}
+.newsFrom form button,.Login button, .Signup button{
+  background-color: rgba(55, 55, 207, 0.74);
+  color: white;
+  border-radius: 5px;
+}
+.newsFrom form .photo{
+  border: none;
+margin-bottom: 10px;
+}
+.Login ,.Signup{
+  border: 2px solid rgb(1, 0, 2);
+  padding: 2vw;
+  width: 300px;
+  margin:0px auto;
+  margin-top: 5%;
+  border-radius: 5px;
+  background-color: #f5f4fd
+
+}
+.Signup input{
+  margin-bottom: 5px;
+  border: none
+
+}
+@media screen and (max-width:768px){
+
+  .Home
+  {
+    height: 600px;
+  }
+
+  .Home img{
+  
+    height: 150px;
+    border-radius: 20px;
+    padding: 2px 0 2px 0;
+  }  
+  .Home button{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
+    border-radius: 20px;
+    
+  }
+  .newsFrom textarea{
+    width: 250px;
+    height: 70px;
+    
+  }
+  .newsFrom form .photo{
+    display: block;
+    border: 1px none;
+   
+    background-color: white;
+    width: 20vw;
+    border-radius: 5px;
+  }
+  .inputMailBox form{
+    margin: 0;
+    width: 200px;
+    padding-left: 65px;
+    height: 300px;
+  }
+  .mailBox, .newsBox, .newsFrom{
+    margin: 0;
+
+  }
+  .inputMailBox select{
+    border: 1px solid gray;
+  margin-bottom: 20px;
+  }
+  .mailBox .inputMailBox .textarea{
+ margin-top: 20px;
+ margin-left: 5px;
+ margin-bottom: 20px;
+  width: 150px;
+  }
+
 }

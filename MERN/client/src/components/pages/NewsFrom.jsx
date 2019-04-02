@@ -43,12 +43,10 @@ class News extends Component {
       
         axios.post(`${SERVER_URL}/sendNews`, postObj).then(res=>{
           console.log(res)
+          this.props.history.push('/')
         })
       })
-      
- 
-  
-    }
+    };
 
   imageChange  = (e) => {
     console.log(e.target.files)
@@ -60,16 +58,13 @@ class News extends Component {
   return(
       <div>
           <NavBar />
-    <div className="newsBox">
-    <h1>Report</h1>
+    <div className="newsFrom">
+
           <form onSubmit={this.handleSubmit}>
-              {/* <input type="text" name="Room" placeholder="Room Number"/> */}
-              <input type="text" name="Title" placeholder="Title"/>
-              <input type="text" name="Description" placeholder="Description"/>
-              <input type="file" name="Photo" placeholder="" onChange={e=>{this.imageChange(e)}}/>
-              <button type='submit'>
-                  Sent
-              </button>
+             <input className="title" required type="text" name="Title" placeholder="Title" /><br/>
+            <textarea className="textarea" required type="text" name="Description" placeholder="Description" /><br/>
+              <input className="photo" required type="file" name="Photo" placeholder="" onChange={e=>{this.imageChange(e)}}/><br/>
+              <button type='submit'> Sent  </button>
           </form>
   </div>
   </div>

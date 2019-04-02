@@ -35,6 +35,7 @@ class Inbox extends Component {
           return message.officer !== true //show all messages from people who are not the officer 
         }) 
       }
+
       console.log(res)
 
       this.setState({
@@ -71,7 +72,9 @@ class Inbox extends Component {
 
       if (eachInbox.writer.officer === false){
         return(
+
         <div key={i} className="eachInbox" >
+
             <span>FROM : {eachInbox.writer.username} </span>
                 <i style={{color:"blue"}}> { moment(eachInbox.created_at).format('L') }; : </i>
                 <span className="title">{eachInbox.Title.toUpperCase()}</span>: {eachInbox.Description}
@@ -96,8 +99,10 @@ class Inbox extends Component {
   updateSearch = (event) => {
     console.log(event.target.value, this.state.messages)
     let messages = [...this.state.messages]
+  
     let filterList = messages.filter((data)=>{
       console.log(data.writer.username, event.target.value)
+
       return data.writer.username.includes(event.target.value)
 
     })
@@ -106,7 +111,25 @@ class Inbox extends Component {
       search:event.target.value 
     })
   }
+ 
+callSearch = () =>{
+  let user = api.getLocalStorageUser(); 
+  let isOfficer = user.officer; 
+  if (isOfficer){
+    return(<div>
+      <form>
 
+        <img width="30px" src="../../../search.png" alt=""/><input type="text" value={this.state.search} placeholder="Room Search..." 
+        onChange={this.updateSearch}
+        />
+
+    </form>
+    </div>)
+
+    
+  }
+}
+  
 
 
 
@@ -117,18 +140,9 @@ class Inbox extends Component {
   return(
     <div> 
       <NavBar/>
-          <div className="indexBox">
-
-    </div>
 
     <div className="indexMesBox" >
-        <form>
-
-             <input type="text" value={this.state.search} placeholder="Room Search..." 
-             onChange={this.updateSearch}
-             />
-
-        </form>
+    {this.callSearch()}
     <p> {this.showAllNews()} </p> 
 
 
